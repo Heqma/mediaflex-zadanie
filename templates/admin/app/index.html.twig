@@ -1,0 +1,39 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Hello AdminAppController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nazwa aplikacji</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for applist in applists %}
+                    <tr>
+                        <th scope="row">{{ applist.id }}</th>
+                        <td>{{ applist.name }}</td>
+                        <td>{{ applist.description }}</td>
+                        <td>
+                            <a href="{{ path('admin_app_update', {'id': applist.id})  }}" title="Edytuj"><i class="bi bi-pencil-fill"></i></a>
+                            <a href="{{ path('admin_app_delete', {'id': applist.id})  }}" title="Usuń"><i class="bi bi-trash3-fill"></i></a>                        
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-between">
+            <a class="btn btn-primary" href="{{ path('admin_app_create') }}" role="button">Dodaj Aplikacje</a>
+            <a class="btn btn-primary" href="{{ path('app_list') }}" role="button">Pobierz Json</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

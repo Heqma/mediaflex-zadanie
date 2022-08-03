@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+
+
+
+   <p>Adres email: <strong>{{ user.email }}</strong></p>  
+   <p>Twoja rola: <strong>{{ user.getRole().getName() }}</strong></p>  
+   <p>Lista Aplikacji:</p>
+        <ul class="list-group">
+            {% for app in user.getUserApp() %}
+                <li class="list-group-item"><strong>{{ app.name }}</strong></li>
+            {% endfor %} 
+        </ul> 
+
+{% endblock %}

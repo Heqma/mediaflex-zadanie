@@ -1,0 +1,26 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Hello AdminUserController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <p>Adres email: <strong>{{ user.email }}</strong></p>  
+            <p>Rola użytkownika: <strong>{{ user.getRole().getName() }}</strong></p> 
+            <p>Lista Aplikacji:</p>
+            <ul class="list-group">
+                {% for app in user.getUserApp() %}
+                    <li class="list-group-item"><strong>{{ app.name }}</strong></li>
+                {% endfor %} 
+            </ul> 
+        </div>
+        <div class="col-md-3"></div>
+       
+        
+    </div>
+</div>
+
+{% endblock %}
